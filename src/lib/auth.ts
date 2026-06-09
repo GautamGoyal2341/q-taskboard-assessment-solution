@@ -8,8 +8,11 @@ export type AuthedUser = {
   name: string;
 };
 
-export async function getCurrentUser(req: NextRequest): Promise<AuthedUser | null> {
-  const auth = req.headers.get("authorization") || req.headers.get("Authorization");
+export async function getCurrentUser(
+  req: NextRequest,
+): Promise<AuthedUser | null> {
+  const auth =
+    req.headers.get("authorization") || req.headers.get("Authorization");
   if (!auth || !auth.startsWith("Bearer ")) return null;
 
   const token = auth.slice(7);
