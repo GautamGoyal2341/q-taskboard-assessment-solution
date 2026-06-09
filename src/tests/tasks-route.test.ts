@@ -97,7 +97,7 @@ describe("PATCH /api/tasks/[id]", () => {
       createdAt: new Date(),
       updatedAt: new Date(),
       assignee: null,
-    });
+    } as never);
 
     const res = await PATCH(patchRequest({ title: "Changed" }), {
       params: Promise.resolve({ id: "task_1" }),

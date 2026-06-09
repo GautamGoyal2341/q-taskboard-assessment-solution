@@ -42,6 +42,13 @@ export function notFound(message = "not found") {
   return NextResponse.json({ error: message }, { status: 404 });
 }
 
+export function methodNotAllowed(allowedMethods: string[], message = "method not allowed") {
+  return NextResponse.json(
+    { error: message },
+    { status: 405, headers: { Allow: allowedMethods.join(", ") } },
+  );
+}
+
 export type ProjectRole = "admin" | "member" | "viewer";
 
 export async function getProjectMembership(userId: string, projectId: string) {

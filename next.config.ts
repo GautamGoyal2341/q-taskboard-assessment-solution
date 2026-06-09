@@ -2,9 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  experimental: {
-    typedRoutes: false,
+  typedRoutes: false,
+  turbopack: { // TODO need to re-verify this change
+    root: process.cwd(),
   },
+  outputFileTracingRoot: process.cwd(),
 };
 
 export default nextConfig;
